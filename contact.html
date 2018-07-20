@@ -38,17 +38,17 @@
 			</div>
 		</section>
 		<section id="content">
-			<div class="map">
-				<div id="google-map" data-latitude="29.3673995" data-longitude="47.9669573"></div>
+		     <div class="map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13908.398902501354!2d47.9677177!3d29.3673691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb391a84656454706!2sAl+Dawliya+building!5e0!3m2!1sen!2sca!4v1531888113027"  frameborder="0" style="border:0; position: relative; height: 400px; width: 100%;" allowfullscreen></iframe>
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-lg-6">
 						<h4>Get in touch with us by filling <strong>contact form below</strong></h4>
 
 						<div id="sendmessage">Your message has been sent. Thank you!</div>
 						<div id="errormessage"></div>
-						<form action="" method="post" role="form" class="contactForm">
+						<form id="gform" action="https://script.google.com/macros/s/AKfycbyXHUDBJRopAKwvfbZptVSL_aRYG7D-PpQRoZRjKhrQwnrEA3iL/exec" method="post" role="form" class="contactForm">
 							<div class="form-group">
 								<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
 								<div class="validation"></div>
@@ -58,17 +58,40 @@
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+								<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="required" data-msg="Please enter a subject" />
 								<div class="validation"></div>
 							</div>
 							<div class="form-group">
-								<textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+								<textarea class="form-control" name="message" rows="5" data-rule="minlen:4" data-msg="Please write something for us with more than 4 letters" placeholder="Message"></textarea>
 								<div class="validation"></div>
 							</div>
 
 							<div class="text-center"><button type="submit" class="btn btn-theme">Send Message</button></div>
 						</form>
+						  <!-- Customise the Thankyou Message People See when they submit the form: -->
+						<div style="display:none;" id="thankyou_message">
+						   	<span class="pullquote-left pullquote-right">
+								<h3><em>Thanks !</em></h3>
+								<h4>We will get back to you soon! </h4>
+							</span>
+						</div>
+
 					</div>
+					<div class="col-xs-6">
+							<div class="pricing-box-alt special">
+								<div class="pricing-heading">
+									<h3><strong>Arsan</strong> Al-Kuwait</h3>
+								</div>
+								<div class="pricing-content">
+									<ul>
+										<li><i class="icon-ok"></i> Dawalia Building, Office No 155, <br> Fahad Al-Salem Street, Kuwait
+										</li>
+										<li><i class="icon-ok"></i> <strong>Phone: </strong> (965) 97278623 / (965) 22459161 </li>
+										<li><i class="icon-ok"></i> <strong>Email: </strong> arsanalkuwait@gmail.com</li>
+									</ul>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 		</section>
@@ -93,32 +116,13 @@
 	<script src="js/portfolio/jquery.quicksand.js"></script>
 	<script src="js/portfolio/setting.js"></script>
 	<script src="js/jquery.flexslider.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
 	<script src="js/animate.js"></script>
 	<script src="js/custom.js"></script>
-	<script>
-		jQuery(document).ready(function($) {
-			//Google Map
-			var get_latitude = $('#google-map').data('latitude');
-			var get_longitude = $('#google-map').data('longitude');
-
-			function initialize_google_map() {
-				var myLatlng = new google.maps.LatLng(get_latitude, get_longitude);
-				var mapOptions = {
-					zoom: 14,
-					scrollwheel: false,
-					center: myLatlng
-				};
-				var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
-				var marker = new google.maps.Marker({
-					position: myLatlng,
-					map: map
-				});
-			}
-			google.maps.event.addDomListener(window, 'load', initialize_google_map);
-		});
-	</script>
-	<script src="contactform/contactform.js"></script>
+	<!-- <script src="js/validate.js"></script> -->
+	<!-- <script src="contactform/contactform.js"></script> -->
+	<!-- Submit the Form to Google Using "AJAX" -->
+  	<script data-cfasync="false" type="text/javascript"
+  	src="js/form-submission-handler.js"></script>
 
 </body>
 
